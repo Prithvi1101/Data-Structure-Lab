@@ -1,0 +1,70 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+int main()
+{
+    int n,x,top=0,top_element;
+    stack<int>Basket;
+    stack<int>Storage;
+    cout<<"Enter capacity of stack: "<<endl;
+    cin>>n;
+    cout<<"Enter elements to be stored:"<<endl;
+    //Pushing elements into the stack
+    for(int i=1; i<=n; i++)
+    {
+        cin>>x;
+        Basket.push(x);
+    }
+    //Printing topmost element
+    top=Basket.top();
+    cout<<"Topmost element is:"<<top<<endl;
+    //Checking if the stack is empty
+    if(Basket.empty()==1)
+    {
+        cout<<"khali"<<endl;
+    }
+    else if(Basket.empty()==0)
+    {
+
+        cout<<"Stack has elements, not Empty!"<<endl;
+    }
+    //Traversing the stack
+    Storage=Basket;
+    cout<<"Printing the elements of stack:"<<endl;
+    while(Basket.empty()==0)
+    {
+
+        top_element=Basket.top();
+        cout<<top_element<<"\n"<<endl;
+        Basket.pop();
+    }
+    if(Basket.empty()==1)
+    {
+        cout<<"khali"<<endl;
+    }
+    else if(Basket.empty()==0)
+    {
+
+        cout<<"Stack has elements, not Empty!"<<endl;
+    }
+
+    cout<<"Printing the elements of Storage stack:"<<endl;
+    while(Storage.empty()==0)
+    {
+
+        top_element=Storage.top();
+        cout<<top_element<<"\n"<<endl;
+        Storage.pop();
+    }
+     if(Storage.empty()==1)
+    {
+        cout<<"khali"<<endl;
+    }
+    else if(Storage.empty()==0)
+    {
+
+        cout<<"Stack has elements, not Empty!"<<endl;
+    }
+    return 0;
+
+}
