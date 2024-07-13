@@ -1,0 +1,65 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#define M (10<<7)
+using namespace std;
+
+// Function to perform BFS on the graph
+void bfs(vector<int> G[], int start) {
+    vector<bool> visited(M + 1, false); // To keep track of visited nodes
+    queue<int> q;
+
+    // Start BFS from the starting node
+    visited[start] = true;
+    q.push(start);
+
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        cout << u << " ";
+
+        // Traverse all adjacent nodes of u
+        for (int v : G[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                q.push(v);
+            }
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    vector<int> G[M + 1];
+    int ne;
+    cout << "Enter number of edges:" << endl;
+    cin >> ne;
+
+    for (int i = 1; i <= ne; i++) {
+        int u, v;
+        cout << "Enter u and v:" << endl;
+        cin >> u >> v;
+        G[u].push_back(v);
+        G[v].push_back(u);
+    }
+
+    // Print adjacency list (optional)
+    for (int u = 1; u <= M; u++) {
+        if (!G[u].empty()) {
+            cout << u << ": ";
+            for (int v : G[u]) {
+                cout << v << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    int startNode;
+    cout << "Enter the starting node for BFS:" << endl;
+    cin >> startNode;
+
+    cout << "BFS Traversal starting from node " << startNode << ":" << endl;
+    bfs(G, startNode);
+
+    return 0;
+}

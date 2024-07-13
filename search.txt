@@ -1,0 +1,52 @@
+#include <stdio.h>
+int main()
+{
+    int i, n, k, q, mid, start = 0,iterations=0;
+    printf("Enter array size: ");
+    scanf("%d", &n);
+    int arr[n];
+    int end = n - 1;
+    printf("Insert %d numbers:", n);
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    printf("Insert no of queries(q)?\n");
+    scanf("%d", &q);
+    printf("Enter the number to search in array:\n");
+    for (i = 0; i <q; i++)
+    {
+        iterations++;
+        scanf("%d", &k);
+        start = 0;
+        end = n - 1;
+        while (start <= end)
+        {   iterations++;
+            mid = (start + end)/ 2;
+            if (k == arr[mid])
+            {
+                printf("Position: %d\n", mid);
+                break;
+            }
+            else if (k < arr[mid])
+            {
+                end = mid - 1;
+            }
+            else if (k > arr[mid])
+            {
+                start = mid + 1;
+            }
+            if (start > end)
+            {
+                printf("-1\n");
+            }
+        }
+
+
+
+    }
+
+    printf("Iterations number: %d",iterations);
+    return 0;
+}
+

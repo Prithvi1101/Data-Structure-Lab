@@ -1,0 +1,47 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    // Write C code here
+    int size;
+    printf("Enter size:\n");
+    scanf("%d",&size);
+    int arr[size];
+    printf("Enter elements:\n");
+    for(int i=0;i<size;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("The unsorted array:\n");
+    for(int i=0;i<=size-1;i++)
+    {
+        printf("%d \t",arr[i]);
+    }
+    int f_pos,min_element,min_pos,step,temp;
+    for(step=0;step<=size-2;step++)
+    {
+        f_pos=step;
+        min_pos=f_pos;
+        min_element=arr[f_pos];
+        for(int i=f_pos+1;i<=size-1;i++)
+        {
+            if(arr[i]<min_element)
+            {   
+                min_pos=i;
+                min_element=arr[i];
+            }
+        }
+        
+            temp=arr[f_pos];
+       arr[f_pos]=arr[min_pos];
+        arr[min_pos]=temp;
+    }
+   
+    printf("\nAfter sorting:\n");
+    for(int i=0;i<=size-1;i++)
+    {
+        printf("%d\t",arr[i]);
+    }
+
+    return 0;
+}
